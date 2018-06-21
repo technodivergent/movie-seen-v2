@@ -15,13 +15,17 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit() {
     this.movie = new Movie();
-    this.getMovie('The Matrix');
+    this.getMovieByTitle('The Matrix');
   }
 
-  getMovie(query: string) {
-    this.movieService.getMovie(query).subscribe(d => {
+  getMovieByTitle(query: string) {
+    this.movieService.getMovieByTitle(query).subscribe(d => {
       this.movie.title = d['Title'];
       this.movie.year = d['Year'];
+      this.movie.rated = d['Rated'];
+      this.movie.released = d['Released'];
+      this.movie.runtime = d['Runtime'];
+      this.movie.genre = d['Genre'];
     });
     console.log(this.movie);
   }
