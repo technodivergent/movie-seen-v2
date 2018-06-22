@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Movie } from '../models/movie';
+import { Title } from '../models/title';
 import { Query } from '../models/query';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -31,33 +31,37 @@ export class MoviesService {
     );
   }
 
-  getMovieByTitle(movie_title: string): Observable<any> {
-    return this._http.get<Movie>(`${this.base_url}&t=${movie_title}`).pipe(
+  getTitleByID(movie_id: string): Observable<any> {
+    return this._http.get<Title>(`${this.base_url}&i=${movie_id}`).pipe(
       map( data => {
-        const movie: Movie = new Movie();
-        movie.title = data['Title'];
-        movie.year = data['Year'];
-        movie.rated = data['Rated'];
-        movie.released = data['Released'];
-        movie.runtime = data['Runtime'];
-        movie.genre = data['Genre'];
-        movie.director = data['Director'];
-        movie.writer = data['Writer'];
-        movie.actors = data['Actors'];
-        movie.awards = data['Awards'];
-        movie.poster = data['Poster'];
-        movie.ratings = data['Ratings'];
-        movie.metascore = data['Metascore'];
-        movie.imdbRating = data['imdbRating'];
-        movie.imdbVotes = data['imdbVotes'];
-        movie.imdbID = data['imdbID'];
-        movie.type = data['Type'];
-        movie.dvdRelease = data['DVD'];
-        movie.boxOffice = data['BoxOffice'];
-        movie.production = data['Production'];
-        movie.website = data['Website'];
-        movie.response = data['Response'];
-        return movie;
+        const title: Title = new Title();
+        title.title = data['Title'];
+        title.year = data['Year'];
+        title.rated = data['Rated'];
+        title.released = data['Released'];
+        title.runtime = data['Runtime'];
+        title.genre = data['Genre'];
+        title.director = data['Director'];
+        title.writer = data['Writer'];
+        title.actors = data['Actors'];
+        title.plot = data['Plot'];
+        title.language = data['Language'];
+        title.country = data['Country'];
+        title.awards = data['Awards'];
+        title.poster = data['Poster'];
+        title.ratings = data['Ratings'];
+        title.metascore = data['Metascore'];
+        title.imdbRating = data['imdbRating'];
+        title.imdbVotes = data['imdbVotes'];
+        title.imdbID = data['imdbID'];
+        title.type = data['Type'];
+        title.dvdRelease = data['DVD'];
+        title.boxOffice = data['BoxOffice'];
+        title.production = data['Production'];
+        title.website = data['Website'];
+        title.response = data['Response'];
+        console.log(title);
+        return title;
       })
     );
   }

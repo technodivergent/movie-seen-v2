@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../services/movies.service';
-import { Movie } from '../models/movie';
+import { Title } from '../models/title';
 import { Observable } from 'rxjs';
 import { Query } from '../models/query';
 
@@ -12,7 +12,7 @@ import { Query } from '../models/query';
 export class MoviesComponent implements OnInit {
   query: Query[];
 
-  constructor(private movieService: MoviesService) { }
+  constructor(private _movieService: MoviesService) { }
 
   ngOnInit() {
     this.query = [];
@@ -20,7 +20,7 @@ export class MoviesComponent implements OnInit {
   }
 
   search(query: string) {
-    this.movieService.search(query).subscribe(data => {
+    this._movieService.search(query).subscribe(data => {
       this.query = data;
     });
   }

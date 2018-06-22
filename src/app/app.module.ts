@@ -7,10 +7,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MoviesComponent } from './movies/movies.component';
 import { SearchComponent } from './search/search.component';
-import { MovieComponent } from './movie/movie.component';
+import { TitleComponent } from './title/title.component';
 
 const appRoutes: Routes = [
-  { path: 'movie/:id', component: MovieComponent },
+  { path: 'title/:id', component: TitleComponent },
   { path: 'movies', component: MoviesComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
   // { path: '**', component: PageNotFoundComponent }
@@ -21,7 +21,7 @@ const appRoutes: Routes = [
     AppComponent,
     MoviesComponent,
     SearchComponent,
-    MovieComponent
+    TitleComponent
   ],
   imports: [
     RouterModule.forRoot(

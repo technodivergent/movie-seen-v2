@@ -1,4 +1,4 @@
-export class Movie {
+export class Title {
     title: string;
     year: string;
     rated: string;
@@ -8,6 +8,9 @@ export class Movie {
     director: string;
     writer: string;
     actors: string;
+    plot: string;
+    language: string;
+    country: string;
     awards: string;
     poster: string;
     ratings: string[];

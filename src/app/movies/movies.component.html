@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row" *ngFor="let q of query">
     <div class="col-sm-3 col-md-3 col-lg-3">
-      <a [routerLink]="['/movies', q.imdbID]" routerLinkActive="active">{{q.title}}</a>
+      <a [routerLink]="['/title', q.imdbID]" routerLinkActive="active">{{q.title}}</a>
     </div>
     <div class="col-sm-1 col-md-1 col-lg-1">
       {{q.year}}
