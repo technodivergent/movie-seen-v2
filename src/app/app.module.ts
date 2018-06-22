@@ -11,7 +11,7 @@ import { TitleComponent } from './title/title.component';
 
 const appRoutes: Routes = [
   { path: 'title/:id', component: TitleComponent },
-  { path: 'movies', component: MoviesComponent },
+  { path: 'search/:query', component: MoviesComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
   // { path: '**', component: PageNotFoundComponent }
 ];

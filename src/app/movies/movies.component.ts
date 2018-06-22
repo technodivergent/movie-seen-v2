@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../services/movies.service';
 import { Title } from '../models/title';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Query } from '../models/query';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movies',
@@ -10,17 +11,23 @@ import { Query } from '../models/query';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
+  subscription: Subscription;
   query: Query[];
 
-  constructor(private _movieService: MoviesService) { }
+  constructor(
+    private _moviesService: MoviesService,
+    private _route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this.query = [];
-    this.search('The Matrix');
+    this.subscription = this._route.params.subscribe( params => {
+      this.search(params.query);
+    })
   }
 
   search(query: string) {
-    this._movieService.search(query).subscribe(data => {
+    this.query = [];
+    this._moviesService.search(query).subscribe(data => {
       this.query = data;
     });
   }
