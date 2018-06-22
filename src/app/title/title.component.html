@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="media-heading">{{title.title}} ({{title.year}})</h4>
+            </div>
+            <div class="panel-body">
+              <div class="media">
+                <div class="media-left media-middle">
+                  <img class="media-object" width="128" height="189" src="{{title.poster}}">
+                  <a href="http://imdb.com/title/{{title.imdbID}}"><span title="View on IMDb" class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
+                </div>
+                <div class="media-body">
+                  <div class="media-heading">
+                    <span title="Rating">{{title.rated}}</span> | <span title="Runtime">{{title.runtime}}</span> | <span title="Genre">{{title.genre}}</span> | <span title="Released">{{title.released}}</span>
+                  </div>
+                {{title.plot}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

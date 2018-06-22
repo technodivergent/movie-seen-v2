@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <form>
+          <label for="query">Search: </label>
+          <input #query type="text" class="form-control" required>
+          <button (click)="onClick(query.value)" type="submit" class="btn btn-success">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
