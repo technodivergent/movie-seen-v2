@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../services/movies.service';
 import { Movie } from '../models/movie';
 import { Observable } from 'rxjs';
+import { Query } from '../models/query';
 
 @Component({
   selector: 'app-movies',
@@ -9,24 +10,18 @@ import { Observable } from 'rxjs';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
-  movie: Movie;
+  query: Query[];
 
   constructor(private movieService: MoviesService) { }
 
   ngOnInit() {
-    this.movie = new Movie();
-    this.getMovieByTitle('The Matrix');
+    this.query = [];
+    this.search('The Matrix');
   }
 
-  getMovieByTitle(query: string) {
-    this.movieService.getMovieByTitle(query).subscribe(d => {
-      this.movie.title = d['Title'];
-      this.movie.year = d['Year'];
-      this.movie.rated = d['Rated'];
-      this.movie.released = d['Released'];
-      this.movie.runtime = d['Runtime'];
-      this.movie.genre = d['Genre'];
+  search(query: string) {
+    this.movieService.search(query).subscribe(data => {
+      this.query = data;
     });
-    console.log(this.movie);
   }
 }
